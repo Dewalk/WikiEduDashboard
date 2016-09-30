@@ -13,6 +13,7 @@ json.course do
             :uploads_in_use_count, :upload_usages_count)
 
   json.term @course.cloned_status == 1 ? '' : @course.term
+  json.cloned_status @course.cloned_status
   json.legacy @course.legacy?
   json.ended !current?(@course) && @course.start < Time.zone.now
   json.published CohortsCourses.exists?(course_id: @course.id)
